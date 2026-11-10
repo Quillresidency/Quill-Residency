@@ -1,151 +1,658 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Quill Residency | Mountain View Retreat in Tiruvannamalai</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            400: '#DFBE52',
-                            500: '#C5A059',
-                            600: '#A6813B',
-                        },
-                        logoNavy: '#09111E',
-                        logoDeep: '#050A14',
-                        cream: '#FAF7F2',
-                        paper: '#F3EEE6'
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .logo-gold-text {
-            background: linear-gradient(135deg, #FFF0B2 0%, #D4AF37 40%, #A6813B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-bg {
-            background-image: linear-gradient(to bottom, rgba(5, 10, 20, 0.75), rgba(9, 17, 30, 0.92)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Quill Residency · Tiruvannamalai</title>
+<meta name="description" content="A heritage-inspired luxury residency facing Arunachala, 1 km from the Girivalam path, Tiruvannamalai. Book direct.">
+<meta name="theme-color" content="#3A0F12">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mukta:wght@300;400;500;600;700&family=Noto+Serif+Tamil:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#3A0F12; --maroon-2:#561B1C; --maroon-3:#702826;
+  --turmeric:#E2A936; --turmeric-2:#C4881C; --kumkum:#B5322B;
+  --ivory:#FBF5EA; --sand:#F3E7D3; --ink:#2A1A16; --muted:#7A665B;
+  --line:rgba(58,15,18,.14);
+  --head:"Marcellus",Georgia,serif; --body:"Mukta",system-ui,sans-serif; --tamil:"Noto Serif Tamil",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink);background:var(--ivory)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+.wrap>*{min-width:0}
+section{padding:110px 0;position:relative}
+h1,h2,h3,h4{font-family:var(--head);font-weight:400;line-height:1.12}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--kumkum);font-weight:600}
+.kicker::before{content:"";width:9px;height:9px;background:var(--turmeric);transform:rotate(45deg)}
+.title{font-size:clamp(34px,4.6vw,56px);margin:14px 0 18px;color:var(--maroon)}
+.sub{color:var(--muted);max-width:620px;font-size:18px}
+.center{text-align:center}.center .sub{margin:0 auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 30px;border-radius:4px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:14px;cursor:pointer;border:2px solid transparent;transition:.25s}
+.btn-gold{background:var(--turmeric);color:var(--maroon)} .btn-gold:hover{background:#F0BC4E}
+.btn-maroon{background:var(--maroon);color:var(--ivory)} .btn-maroon:hover{background:var(--maroon-3)}
+.btn-ghost{border-color:rgba(251,245,234,.6);color:var(--ivory)} .btn-ghost:hover{background:rgba(255,255,255,.1)}
+/* kolam dot pattern + border */
+.kolam{background-image:radial-gradient(circle,rgba(226,169,54,.35) 1.6px,transparent 2px),radial-gradient(circle,rgba(226,169,54,.18) 1.2px,transparent 1.6px);background-size:28px 28px,28px 28px;background-position:0 0,14px 14px}
+.border-temple{height:22px;background:
+  linear-gradient(135deg,var(--turmeric) 25%,transparent 25%) -11px 0/22px 22px,
+  linear-gradient(225deg,var(--turmeric) 25%,transparent 25%) -11px 0/22px 22px,
+  var(--maroon)}
+.reveal{opacity:0;transform:translateY(26px);transition:.9s ease}.reveal.in{opacity:1;transform:none}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:40;transition:.35s}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:86px}
+header.solid{background:var(--maroon);box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ivory)}
+.medal{width:58px;height:58px;border-radius:50%;background:var(--ivory);padding:3px;border:2px solid var(--turmeric);overflow:hidden}
+.medal img{width:100%;height:100%;object-fit:cover;border-radius:50%;transform:scale(1.25)}
+.brand b{font-family:var(--head);font-size:21px;letter-spacing:.14em;display:block;line-height:1}
+.brand small{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--turmeric)}
+.links{display:flex;gap:30px;color:var(--ivory);font-size:14px;letter-spacing:.16em;text-transform:uppercase}
+.links a:hover{color:var(--turmeric)}
+.burger{display:none;background:none;border:0;color:var(--ivory);font-size:28px;cursor:pointer}
+.mnav{display:none;background:var(--maroon);padding:6px 22px 18px}
+.mnav a{display:block;color:var(--ivory);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1);letter-spacing:.14em;text-transform:uppercase;font-size:14px}
+.mnav.open{display:block}
+
+/* hero */
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;color:var(--ivory);padding:140px 22px 120px;
+  background:linear-gradient(180deg,rgba(58,15,18,.55),rgba(58,15,18,.35) 45%,rgba(58,15,18,.95)),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover}
+.vanakkam{font-family:var(--tamil);font-size:22px;color:var(--turmeric)}
+.hero h1{font-size:clamp(42px,7vw,92px);margin:14px auto 22px;max-width:1000px}
+.hero h1 span{color:var(--turmeric)}
+.hero p{max-width:640px;margin:0 auto;font-size:19px;color:#F1E3CF}
+.hero .acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.hero-strip{position:absolute;left:0;right:0;bottom:0}
+.hero-facts{background:var(--maroon);color:var(--ivory)}
+.hero-facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.hero-facts div div{padding:24px 10px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.hero-facts div div:last-child{border-right:0}
+.hero-facts b{font-family:var(--head);font-size:30px;color:var(--turmeric);display:block;line-height:1.1}
+.hero-facts span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#E6D3BA}
+
+/* welcome */
+.welcome{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.frame{position:relative;padding:18px}
+.frame::before{content:"";position:absolute;inset:0;border:2px solid var(--turmeric);border-radius:200px 200px 0 0}
+.frame img{border-radius:190px 190px 0 0;aspect-ratio:4/5;object-fit:cover;width:100%}
+.sig{font-family:var(--head);font-size:22px;color:var(--maroon);margin-top:26px}
+.sig small{display:block;font-family:var(--body);font-size:14px;color:var(--muted)}
+
+/* rooms tabs */
+.rooms{background:var(--sand)}
+.tabs{display:flex;justify-content:center;gap:10px;margin:44px 0 36px;flex-wrap:wrap}
+.tab{padding:12px 24px;border:2px solid var(--maroon);border-radius:4px;background:transparent;cursor:pointer;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:14px;color:var(--maroon)}
+.tab.on{background:var(--maroon);color:var(--ivory)}
+.rpanel{display:grid;grid-template-columns:1.3fr 1fr;background:var(--ivory);border-radius:6px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(58,15,18,.35)}
+.rpanel .img{min-height:460px;background-size:cover;background-position:center;position:relative}
+.rpanel .img span{position:absolute;top:20px;left:20px;background:var(--turmeric);color:var(--maroon);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:7px 14px;border-radius:3px}
+.rpanel .info{padding:44px}
+.rpanel h3{font-size:36px;color:var(--maroon)}
+.rpanel .count{color:var(--kumkum);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+.rpanel p{color:var(--muted);margin:16px 0}
+.flist{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:20px 0 28px;list-style:none}
+.flist li{font-size:15px;display:flex;gap:9px;align-items:center}
+.flist li::before{content:"";width:7px;height:7px;background:var(--turmeric);transform:rotate(45deg);flex:none}
+.rprice{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--line);padding-top:22px;flex-wrap:wrap}
+.rprice b{font-family:var(--head);font-size:34px;color:var(--maroon)}
+.rprice small{color:var(--muted);font-size:14px}
+
+/* amenities */
+.amen{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:50px}
+.amen div{background:var(--ivory);border:1px solid var(--line);border-radius:6px;padding:24px 10px;text-align:center;font-size:14px;color:var(--maroon);font-weight:500}
+.amen svg{width:30px;height:30px;stroke:var(--kumkum);fill:none;stroke-width:1.6;margin:0 auto 10px;display:block}
+
+/* hill band */
+.hill{background:var(--maroon);color:var(--ivory);overflow:hidden}
+.hill .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hill .title{color:var(--ivory)} .hill .sub{color:#E6D3BA}
+.hill .kicker{color:var(--turmeric)}
+.hill-list{display:grid;gap:14px}
+.hill-list div{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(226,169,54,.25);border-radius:6px;padding:18px}
+.hill-list b{font-family:var(--head);font-size:26px;color:var(--turmeric);text-align:center}
+.hill-list h4{font-size:21px}
+.hill-list p{font-size:14px;color:#E6D3BA}
+
+/* dining */
+.dine{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.banana{border-radius:6px;overflow:hidden;position:relative}
+.banana img{aspect-ratio:5/4;object-fit:cover;width:100%}
+.menu{margin-top:26px;border-top:2px dotted var(--turmeric-2)}
+.menu div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:2px dotted var(--turmeric-2)}
+.menu b{font-family:var(--head);font-size:21px;color:var(--maroon)}
+.menu span{color:var(--muted);font-size:15px;text-align:right}
+
+/* packages */
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:50px}
+.pk article{background:var(--ivory);border:1px solid var(--line);border-top:5px solid var(--turmeric);border-radius:6px;padding:34px 30px;display:flex;flex-direction:column}
+.pk article:nth-child(2){border-top-color:var(--kumkum)}
+.pk .when{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--kumkum);font-weight:600}
+.pk h3{font-size:28px;color:var(--maroon);margin:10px 0 12px}
+.pk p{color:var(--muted);font-size:16px;flex:1}
+.pk ul{list-style:none;margin:18px 0 24px;font-size:15px}
+.pk li{padding:5px 0;border-bottom:1px dashed var(--line)}
+.pk li::before{content:"✦ ";color:var(--turmeric-2)}
+
+/* gallery */
+.gal{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 22px 26px;margin-top:40px;scrollbar-width:thin}
+.gal img{height:380px;width:auto;aspect-ratio:3/4;object-fit:cover;border-radius:6px;scroll-snap-align:center;flex:none}
+.gal img:nth-child(odd){aspect-ratio:4/3}
+
+/* faq/contact */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+details{background:var(--ivory);border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-family:var(--head);font-size:20px;color:var(--maroon);list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--kumkum);transition:.3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:10px;font-size:16px}
+.cbox{background:var(--maroon);color:var(--ivory);border-radius:6px;padding:36px;margin-bottom:20px}
+.cbox div{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.cbox small{display:block;color:var(--turmeric);letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+iframe.map{width:100%;height:300px;border:0;border-radius:6px}
+footer{background:#24090B;color:#D8C3A7;padding:70px 0 26px}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px}
+.fg h5{font-family:var(--head);font-size:18px;color:var(--turmeric);margin-bottom:14px;font-weight:400}
+.fg a{display:block;padding:4px 0;font-size:15px} .fg a:hover{color:var(--turmeric)}
+.fbot{border-top:1px solid rgba(255,255,255,.1);margin-top:50px;padding-top:22px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px}
+
+/* floating book */
+.fab{position:fixed;right:22px;bottom:22px;z-index:45;display:flex;gap:12px}
+.fab .btn{box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.wa{width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.wa svg{width:26px;fill:#fff}
+
+/* booking drawer */
+.scrim{position:fixed;inset:0;background:rgba(36,9,11,.6);z-index:70;opacity:0;pointer-events:none;transition:.3s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--ivory);z-index:71;transform:translateX(100%);transition:.4s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}
+body.booking .scrim{opacity:1;pointer-events:auto}
+body.booking .drawer{transform:none}
+body.booking{overflow:hidden}
+.dhead{background:var(--maroon);color:var(--ivory);padding:22px 26px;display:flex;justify-content:space-between;align-items:center}
+.dhead h3{font-size:26px}
+.dhead button{background:none;border:0;color:var(--turmeric);font-size:30px;cursor:pointer;line-height:1}
+.dbody{flex:1;overflow-y:auto;padding:24px 26px}
+.dfoot{border-top:1px solid var(--line);padding:16px 26px;background:#fff;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.dfoot small{display:block;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.dfoot b{font-family:var(--head);font-size:26px;color:var(--maroon)}
+.blk{margin-bottom:26px}
+.blk > .lbl{display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--kumkum);margin-bottom:10px}
+/* calendar */
+.cal{border:1px solid var(--line);border-radius:6px;background:#fff;padding:14px}
+.calnav{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.calnav b{font-family:var(--head);font-size:19px;color:var(--maroon)}
+.calnav button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;cursor:pointer;font-size:16px}
+.calnav button:disabled{opacity:.3;cursor:default}
+.grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
+.grid7 .dow{font-size:12px;color:var(--muted);padding:4px 0;font-weight:600}
+.day{border:0;background:none;border-radius:4px;padding:7px 0 5px;cursor:pointer;font-size:15px;line-height:1.1}
+.day small{display:block;font-size:10px;color:var(--muted)}
+.day:hover:not(:disabled){background:var(--sand)}
+.day:disabled{color:#CBBFB2;cursor:default}
+.day.inrange{background:#F7E2B5;border-radius:0}
+.day.start,.day.end{background:var(--maroon)!important;color:var(--ivory);border-radius:4px}
+.day.start small,.day.end small{color:var(--turmeric)}
+.calhint{font-size:14px;color:var(--maroon);margin-top:10px;font-weight:500}
+.cnt{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.cnt div{background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.cnt span{font-size:12px;color:var(--muted);display:block}
+.cnt .ctl{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.cnt button{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--ivory);cursor:pointer}
+.cnt b{font-size:18px}
+.ropt{display:grid;gap:10px}
+.ropt label{display:flex;gap:12px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:6px;padding:10px;cursor:pointer}
+.ropt label:has(input:checked){border-color:var(--turmeric-2);background:#FFF9EC}
+.ropt label.off{opacity:.45;cursor:not-allowed}
+.ropt input{accent-color:var(--maroon)}
+.ropt img{width:70px;height:54px;object-fit:cover;border-radius:4px}
+.ropt .n{flex:1;line-height:1.3}
+.ropt .n b{font-family:var(--head);font-size:18px;color:var(--maroon);font-weight:400}
+.ropt .n small{display:block;font-size:13px;color:var(--muted)}
+.ropt .pr{text-align:right;font-weight:600;line-height:1.2}
+.ropt .pr small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.inp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.inp input,.inp select,.inp textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px;outline:none}
+.inp input:focus,.inp textarea:focus{border-color:var(--turmeric-2)}
+.inp .full{grid-column:1/-1}
+.bill{background:#fff;border:1px dashed var(--turmeric-2);border-radius:6px;padding:16px;font-size:15px}
+.bill div{display:flex;justify-content:space-between;padding:4px 0}
+.bill .tot{border-top:1px solid var(--line);margin-top:8px;padding-top:10px;font-weight:700;color:var(--maroon)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);margin-top:12px}
+.chk input{accent-color:var(--maroon);margin-top:4px}
+.err{color:var(--kumkum);font-size:14px;min-height:20px}
+.ok{text-align:center;padding:30px 0}
+.ok .seal{width:84px;height:84px;margin:0 auto 18px;border-radius:50%;background:var(--turmeric);display:grid;place-items:center;font-size:38px;color:var(--maroon)}
+.ok h3{font-size:30px;color:var(--maroon)}
+.ok .ref{font-family:var(--head);font-size:30px;color:var(--kumkum);margin:8px 0 16px;letter-spacing:.06em}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(36,9,11,.7);display:none;padding:20px;overflow:auto}
+.modal.open{display:block}
+.modal>div{max-width:600px;margin:8vh auto;background:var(--ivory);border-radius:6px;padding:34px;position:relative;border-top:5px solid var(--turmeric)}
+.modal button{position:absolute;right:14px;top:8px;border:0;background:none;font-size:30px;cursor:pointer}
+.modal ul{padding-left:20px}.modal li{margin:6px 0}
+
+@media(max-width:960px){
+  section{padding:80px 0}
+  .links{display:none}.burger{display:block}
+  .brand b{font-size:17px}
+  .welcome,.hill .grid,.dine,.two,.rpanel{grid-template-columns:1fr;gap:40px}
+  .rpanel{gap:0}.rpanel .img{min-height:280px}.rpanel .info{padding:28px}
+  .amen{grid-template-columns:repeat(3,1fr)}
+  .pk{grid-template-columns:1fr}
+  .hero-facts .wrap{grid-template-columns:1fr 1fr}
+  .hero-facts div div:nth-child(2){border-right:0}
+  .hero{padding-bottom:220px}
+  .fg{grid-template-columns:1fr 1fr}
+  .gal img{height:260px}
+}
+@media(max-width:520px){
+  .flist{grid-template-columns:1fr}
+  .amen{grid-template-columns:repeat(2,1fr)}
+  .cnt{grid-template-columns:1fr}
+  .inp{grid-template-columns:1fr}
+  .fab .btn{padding:14px 20px}
+  .fg{grid-template-columns:1fr}
+}
+</style>
 </head>
-<body class="font-sans bg-cream text-stone-800 antialiased selection:bg-gold-500 selection:text-logoNavy">
+<body>
 
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-logoDeep text-gold-300 text-xs py-2.5 px-4 border-b border-gold-500/20 text-center font-medium tracking-wide flex justify-between items-center max-w-7xl mx-auto sm:px-8">
-        <div class="hidden md:flex items-center gap-4 text-stone-300">
-            <span><i class="fa-solid fa-location-dot text-gold-500 mr-1.5"></i> Tiruvannamalai | 1km from Girivala Path</span>
-        </div>
-        <div>
-            <span>Welcome to <strong class="text-gold-400 font-semibold">thequillresidency.com</strong></span>
-        </div>
+<header id="hdr">
+  <div class="wrap">
+    <a href="#" class="brand"><span class="medal"><img src="logo.jpeg" alt="The Quill Residency logo"></span><span><b>THE QUILL</b><small>Residency</small></span></a>
+    <nav class="links"><a href="#rooms">Rooms</a><a href="#hill">The Hill</a><a href="#dining">Dining</a><a href="#packages">Packages</a><a href="#contact">Contact</a></nav>
+    <button class="btn btn-gold" onclick="openBook()" style="padding:11px 22px">Book Now</button>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('mnav').classList.toggle('open')">☰</button>
+  </div>
+  <nav class="mnav" id="mnav"><a href="#rooms">Rooms</a><a href="#hill">The Hill</a><a href="#dining">Dining</a><a href="#packages">Packages</a><a href="#contact">Contact</a></nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <p class="vanakkam">வணக்கம் · Welcome</p>
+    <h1>Stay in the presence of <span>Arunachala</span></h1>
+    <p>A heritage-inspired luxury residency, 1 km from the Girivalam path. Ten rooms, a kitchen that cooks only when you ask, and the sacred hill in view.</p>
+    <div class="acts"><button class="btn btn-gold" onclick="openBook()">Check Availability</button><a href="#rooms" class="btn btn-ghost">See Rooms</a></div>
+  </div>
+  <div class="hero-strip">
+    <div class="border-temple"></div>
+    <div class="hero-facts"><div class="wrap">
+      <div><b>1 km</b><span>Girivalam path</span></div>
+      <div><b>10</b><span>Rooms & suites</span></div>
+      <div><b>3</b><span>Fresh meals daily</span></div>
+      <div><b>24 hrs</b><span>Guest care</span></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- WELCOME -->
+<section class="kolam">
+  <div class="wrap welcome">
+    <div class="frame reveal"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80" alt="The Quill Residency"></div>
+    <div class="reveal">
+      <span class="kicker">Our Welcome</span>
+      <h2 class="title">Hospitality the way Tamil homes have always done it</h2>
+      <p class="sub">In Tiruvannamalai, a guest is treated like God — <em>Athithi Devo Bhava</em>. At The Quill Residency we keep that spirit: a warm welcome at the door, filter coffee when you return from darshan, and a team that remembers your name.</p>
+      <p class="sub" style="margin-top:14px">Our rooms face the hill. Our kitchen cooks each meal fresh. Everything else is arranged so that your time here is about the mountain, the temple and your own quiet.</p>
+      <p class="sig">The Quill Residency family<small>Tiruvannamalai</small></p>
     </div>
+  </div>
+</section>
 
-    <!-- MAIN NAVIGATION -->
-    <nav class="sticky top-0 z-40 bg-logoNavy/95 backdrop-blur-md text-white border-b border-gold-500/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
-                <a href="#" class="flex items-center space-x-3 group">
-                    <div>
-                        <span class="font-serif text-xl sm:text-2xl tracking-wider font-bold logo-gold-text">THE QUILL RESIDENCY</span>
-                        <span class="text-[9px] tracking-[0.35em] text-gold-300 uppercase block mt-1 font-semibold">Mountain View Retreat</span>
-                    </div>
-                </a>
-                <div class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide">
-                    <a href="#about" class="hover:text-gold-400 transition">About</a>
-                    <a href="#rooms" class="hover:text-gold-400 transition">Rooms</a>
-                    <a href="#dining" class="hover:text-gold-400 transition">Dining</a>
-                    <a href="#contact" class="hover:text-gold-400 transition">Location</a>
-                </div>
-                <div class="hidden sm:flex">
-                    <button onclick="openBookingModal()" class="bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 text-logoDeep font-bold px-6 py-2.5 rounded-full shadow-lg transition duration-300 border border-gold-300/50 text-xs tracking-wider uppercase">
-                        Book Now
-                    </button>
-                </div>
-            </div>
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="wrap">
+    <div class="center reveal"><span class="kicker">Rooms & Suites</span><h2 class="title">Choose your sanctuary</h2><p class="sub">Six Standard Rooms, one glass-walled Premium Mountain View Room and three Suites.</p></div>
+    <div class="tabs" id="tabs"></div>
+    <div class="rpanel reveal" id="rpanel"></div>
+    <div class="amen reveal">
+      <div><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg>Free Wi-Fi</div>
+      <div><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg>Air conditioned</div>
+      <div><svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zM8 14v6M12 14v6M16 14v6"/></svg>Hot water 24h</div>
+      <div><svg viewBox="0 0 24 24"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 8V6"/></svg>Room service</div>
+      <div><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>Parking</div>
+      <div><svg viewBox="0 0 24 24"><path d="M5 17h14l-1.5-6h-11zM7 17v2M17 17v2M8 11l1.5-4h5L16 11"/></svg>Travel desk</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE HILL -->
+<section class="hill" id="hill">
+  <div class="kolam" style="position:absolute;inset:0;opacity:.35"></div>
+  <div class="wrap grid">
+    <div class="reveal">
+      <span class="kicker">The Hill</span>
+      <h2 class="title">Arunachala, at your doorstep</h2>
+      <p class="sub">For centuries, pilgrims have walked around this hill barefoot. Our travel desk plans your darshan, ashram visits and Girivalam so the day flows gently.</p>
+      <button class="btn btn-gold" style="margin-top:30px" onclick="openBook()">Plan your visit</button>
+    </div>
+    <div class="hill-list reveal">
+      <div><b>1 km</b><span><h4>Girivalam Path</h4><p>The sacred 14 km walk around the hill. Start from our doorstep.</p></span></div>
+      <div><b>ॐ</b><span><h4>Arunachaleswarar Temple</h4><p>One of India's largest temples, the Pancha Bhoota Sthalam of fire.</p></span></div>
+      <div><b>✦</b><span><h4>Ashrams</h4><p>Sri Ramana Ashram, Skandashramam, Seshadri Swamigal and Yogi Ramsuratkumar.</p></span></div>
+      <div><b>⛰</b><span><h4>Day trips</h4><p>Gingee Fort, Sathanur Dam and the Jawadhu Hills.</p></span></div>
+    </div>
+  </div>
+</section>
+<div class="border-temple"></div>
+
+<!-- DINING -->
+<section id="dining">
+  <div class="wrap dine">
+    <div class="banana reveal"><img src="https://images.unsplash.com/photo-1630383249896-424e482df921?auto=format&fit=crop&w=1000&q=80" alt="South Indian meal"></div>
+    <div class="reveal">
+      <span class="kicker">Dining</span>
+      <h2 class="title">Cooked fresh, only when you order</h2>
+      <p class="sub">No buffet trays, no reheating. Every breakfast, lunch and dinner is prepared when you ask — the way it would be at home.</p>
+      <div class="menu">
+        <div><b>Breakfast</b><span>Idli, pongal, ghee dosa, filter coffee</span></div>
+        <div><b>Lunch</b><span>Traditional South Indian meals</span></div>
+        <div><b>Dinner</b><span>Light, customised to your taste</span></div>
+        <div><b>Satvik & Jain</b><span>On request, for pilgrims</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="kolam" id="packages" style="background-color:var(--sand)">
+  <div class="wrap">
+    <div class="center reveal"><span class="kicker">Packages</span><h2 class="title">For every sacred occasion</h2></div>
+    <div class="pk">
+      <article class="reveal"><span class="when">Karthigai month</span><h3>Karthigai Deepam</h3><p>See the Maha Deepam lit atop Arunachala. Our most requested stay — book early.</p><ul><li>Minimum 2 nights</li><li>All meals included</li><li>Early darshan assistance</li></ul><button class="btn btn-maroon" onclick="openBook('Karthigai Deepam')">Enquire</button></article>
+      <article class="reveal"><span class="when">Every full moon</span><h3>Pournami Girivalam</h3><p>Rest well before and after your 14 km walk around the hill.</p><ul><li>Late checkout</li><li>Satvik dinner</li><li>Warm footbath on return</li></ul><button class="btn btn-maroon" onclick="openBook('Pournami Girivalam')">Book</button></article>
+      <article class="reveal"><span class="when">7 nights or more</span><h3>Seeker's Retreat</h3><p>For ashram visitors and long, quiet stays facing the hill.</p><ul><li>Special weekly rate</li><li>Daily breakfast</li><li>Laundry included</li></ul><button class="btn btn-maroon" onclick="openBook('Seeker\'s Retreat')">Book</button></article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section style="padding-bottom:70px">
+  <div class="wrap center reveal"><span class="kicker">Gallery</span><h2 class="title">Inside The Quill</h2><p class="sub">Swipe to explore. (Replace these with your own hotel photographs.)</p></div>
+  <div class="gal">
+    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=700&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=700&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80" alt="">
+  </div>
+</section>
+
+<!-- FAQ + CONTACT -->
+<section id="contact" style="background:var(--sand)">
+  <div class="wrap two">
+    <div class="reveal"><span class="kicker">Questions</span><h2 class="title">Good to know</h2><div id="faqs"></div></div>
+    <div class="reveal">
+      <span class="kicker">Contact</span><h2 class="title">Reach us</h2>
+      <div class="cbox">
+        <div><small>Address</small><span data-address></span></div>
+        <div><small>Reservations</small><a data-phone-link href="#"><span data-phone></span></a></div>
+        <div><small>Email</small><a data-email-link href="#"><span data-email></span></a></div>
+        <div style="border:0"><small>Check-in · Check-out</small><span data-times></span></div>
+      </div>
+      <iframe class="map" id="map" title="Map" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="border-temple"></div>
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div><span class="medal" style="width:90px;height:90px;display:block"><img src="logo.jpeg" alt=""></span><p style="margin-top:16px;max-width:300px;font-size:15px">A heritage-inspired luxury residency facing Arunachala, Tiruvannamalai.</p></div>
+      <div><h5>Stay</h5><a href="#rooms">Rooms & Suites</a><a href="#dining">Dining</a><a href="#packages">Packages</a></div>
+      <div><h5>Policies</h5><a href="#" data-pol="cancel">Cancellation</a><a href="#" data-pol="terms">Terms</a><a href="#" data-pol="privacy">Privacy</a></div>
+      <div><h5>Follow</h5><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">YouTube</a><a data-wa-link href="#">WhatsApp</a></div>
+    </div>
+    <div class="fbot"><span>© <span id="yr"></span> The Quill Residency</span><span>thequillresidency.com</span></div>
+  </div>
+</footer>
+
+<div class="fab">
+  <button class="btn btn-gold" onclick="openBook()">Book Your Stay</button>
+  <a class="wa" data-wa-link href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.3-.6-.4zM12 21.8a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 24 12a11.7 11.7 0 0 0-3.6-8.4z"/></svg></a>
+</div>
+
+<!-- BOOKING DRAWER -->
+<div class="scrim" onclick="closeBook()"></div>
+<aside class="drawer" aria-label="Booking">
+  <div class="dhead"><div><h3>Reserve your stay</h3><small id="pkgTag" style="color:var(--turmeric);letter-spacing:.14em;text-transform:uppercase;font-size:12px"></small></div><button onclick="closeBook()" aria-label="Close">×</button></div>
+  <div class="dbody" id="dbody">
+    <div id="form">
+      <div class="blk"><span class="lbl">1 · Select your dates</span>
+        <div class="cal">
+          <div class="calnav"><button id="prevM" aria-label="Previous month">‹</button><b id="mLabel"></b><button id="nextM" aria-label="Next month">›</button></div>
+          <div class="grid7" id="calGrid"></div>
         </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header class="relative min-h-[85vh] hero-bg flex items-center justify-center text-white px-4">
-        <div class="max-w-4xl mx-auto text-center py-20">
-            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-wide mb-6">
-                Mountain Facing Serenity in <span class="logo-gold-text italic font-normal">Tiruvannamalai</span>
-            </h1>
-            <p class="text-stone-300 text-base sm:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                Experience unparalleled peace just 1km from the Girivala path. Your sanctuary awaits.
-            </p>
-            <button onclick="openBookingModal()" class="bg-gold-500 hover:bg-gold-400 text-logoDeep font-bold px-8 py-4 rounded-full shadow-xl transition duration-300 text-sm tracking-wider uppercase">
-                Explore Your Stay
-            </button>
+        <p class="calhint" id="calHint"></p>
+      </div>
+      <div class="blk"><span class="lbl">2 · Guests & rooms</span>
+        <div class="cnt">
+          <div><span>Adults</span><div class="ctl"><button data-c="adults" data-d="-1">−</button><b id="cAdults"></b><button data-c="adults" data-d="1">+</button></div></div>
+          <div><span>Children</span><div class="ctl"><button data-c="kids" data-d="-1">−</button><b id="cKids"></b><button data-c="kids" data-d="1">+</button></div></div>
+          <div><span>Rooms</span><div class="ctl"><button data-c="qty" data-d="-1">−</button><b id="cQty"></b><button data-c="qty" data-d="1">+</button></div></div>
         </div>
-    </header>
-
-    <!-- ROOMS SECTION -->
-    <section id="rooms" class="py-24 bg-paper border-b border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs uppercase tracking-widest font-bold text-gold-600">Our Accommodations</span>
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-logoNavy mt-2">10 Exquisite Rooms</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Standard Rooms -->
-                <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-md">
-                    <h3 class="font-serif font-bold text-xl text-logoNavy mb-2">6 Standard Rooms</h3>
-                    <p class="text-xs text-stone-600 leading-relaxed">Comfortable and elegant rooms designed for a relaxing stay.</p>
-                </div>
-                <!-- Premium Room -->
-                <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-md ring-2 ring-gold-500">
-                    <span class="text-[10px] font-bold tracking-widest uppercase text-gold-600 bg-gold-100 px-3 py-1 rounded-full">Mountain View</span>
-                    <h3 class="font-serif font-bold text-xl text-logoNavy mt-3 mb-2">1 Premium Room</h3>
-                    <p class="text-xs text-stone-600 leading-relaxed">Floor-to-ceiling glass walls offering complete, unobstructed views of the mountain.</p>
-                </div>
-                <!-- Suite Rooms -->
-                <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-md">
-                    <h3 class="font-serif font-bold text-xl text-logoNavy mb-2">3 Suite Rooms</h3>
-                    <p class="text-xs text-stone-600 leading-relaxed">Spacious luxurious suites with premium amenities for an indulgent experience.</p>
-                </div>
-            </div>
+      </div>
+      <div class="blk"><span class="lbl">3 · Room type</span><div class="ropt" id="ropt"></div>
+        <label class="chk"><input type="checkbox" id="bf"> <span>Add breakfast — <span id="bfp"></span> per guest per night</span></label>
+      </div>
+      <div class="blk"><span class="lbl">4 · Your details</span>
+        <div class="inp">
+          <input id="gName" class="full" placeholder="Full name *" required>
+          <input id="gPhone" type="tel" placeholder="Mobile (WhatsApp) *" required pattern="[0-9+ ]{10,15}">
+          <input id="gEmail" type="email" placeholder="Email *" required>
+          <select id="gPay"><option>Pay at hotel</option><option>Pay online (UPI / card)</option></select>
+          <select id="gEta"><option>Arrival time: not sure</option><option>Before noon</option><option>Noon – 4 pm</option><option>4 – 8 pm</option><option>After 8 pm</option></select>
+          <textarea id="gNotes" class="full" rows="2" placeholder="Special requests (satvik meals, station pickup…)"></textarea>
         </div>
-    </section>
+      </div>
+      <div class="blk"><span class="lbl">Your bill</span><div class="bill" id="bill"></div>
+        <label class="chk"><input type="checkbox" id="agree"> <span>I accept the <a href="#" data-pol="cancel" style="color:var(--kumkum);text-decoration:underline">cancellation policy</a>. Government photo ID is required at check-in.</span></label>
+        <p class="err" id="err"></p>
+      </div>
+    </div>
+    <div class="ok" id="ok" hidden>
+      <div class="seal">✓</div>
+      <h3>Nandri! Request ready</h3>
+      <p class="ref" id="ref"></p>
+      <p style="color:var(--muted);margin-bottom:22px">Send your request to our desk — we confirm availability within 30 minutes.</p>
+      <a id="waSend" target="_blank" class="btn" style="background:#25D366;color:#fff;width:100%">Send on WhatsApp</a>
+      <a id="mailSend" class="btn btn-maroon" style="width:100%;margin-top:10px">Send by Email</a>
+      <button class="btn" style="width:100%;margin-top:10px;background:none;color:var(--maroon)" onclick="backToForm()">Edit booking</button>
+    </div>
+  </div>
+  <div class="dfoot" id="dfoot"><div><small>Total incl. GST</small><b id="tot">—</b></div><button class="btn btn-maroon" id="sendBtn">Request Booking</button></div>
+</aside>
 
-    <!-- DINING SECTION -->
-    <section id="dining" class="py-24 bg-logoDeep text-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="text-xs uppercase tracking-widest font-bold text-gold-400">In-Dining Experience</span>
-            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gold-100 mt-2 mb-6">
-                Freshly Prepared on Order
-            </h2>
-            <p class="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
-                Enjoy delicious, customized meals for breakfast, lunch, and dinner, prepared fresh upon order by our culinary team.
-            </p>
-        </div>
-    </section>
+<div class="modal" id="modal"><div><button onclick="this.closest('.modal').classList.remove('open')">×</button><div id="mbody"></div></div></div>
 
-    <!-- FOOTER -->
-    <footer class="bg-logoNavy text-stone-400 py-16 border-t border-gold-500/20 text-center">
-        <p class="text-xs text-stone-500">&copy; 2026 The Quill Residency (thequillresidency.com). All rights reserved.</p>
-    </footer>
+<script>
+/* =============== EDIT YOUR HOTEL DETAILS HERE =============== */
+const CONFIG={
+  phone:'+91 90000 00000', whatsapp:'919000000000',
+  email:'reservations@thequillresidency.com',
+  address:'Girivalam Road, Tiruvannamalai, Tamil Nadu 606601',
+  mapQuery:'Arunachala, Tiruvannamalai',
+  checkIn:'12:00 noon', checkOut:'11:00 am',
+  breakfastPerGuest:350,
+  weekendExtra:500,               // ₹ added per room on Friday & Saturday nights (0 to disable)
+  // GST on room tariff/night (India, from 22 Sep 2025): ≤ ₹1,000 nil, ≤ ₹7,500 5%, above 18%
+  gst:t=>t<=1000?0:t<=7500?.05:.18,
+  rooms:[
+    {id:'standard',name:'Standard Room',count:6,price:3999,maxAdults:2,maxKids:1,
+     img:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1100&q=80',
+     desc:'Elegant, restful rooms with soft linen and a rain shower — a calm return after the temple and Girivalam.',
+     feats:['Queen or twin bed','Rain shower','Smart TV','Tea & coffee','Work desk','Free Wi-Fi']},
+    {id:'premium',name:'Premium Mountain View',count:1,price:6999,maxAdults:2,maxKids:1,badge:'Our Signature',
+     img:'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1100&q=80',
+     desc:'Our only room with floor-to-ceiling glass walls and a complete, unobstructed view of Arunachala. Watch the Deepam from your bed.',
+     feats:['King bed','Full glass wall','Hill view','Premium toiletries','Smart TV','Free Wi-Fi']},
+    {id:'suite',name:'Suite',count:3,price:8999,maxAdults:3,maxKids:2,
+     img:'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1100&q=80',
+     desc:'Spacious suites with a separate sitting room and premium amenities — ideal for families travelling together.',
+     feats:['King bed + sofa','Sitting lounge','Large bath','Family friendly','Smart TV','Free Wi-Fi']}
+  ],
+  faqs:[
+    ['How far are you from the Girivalam path?','Just 1 km. Our travel desk arranges cars to the temple and ashrams at any hour.'],
+    ['What are the check-in and check-out times?','Check-in from 12 noon, check-out by 11 am. Early or late timing on request.'],
+    ['Is food available in the hotel?','Yes — breakfast, lunch and dinner, cooked fresh on order. Satvik and Jain meals on request.'],
+    ['When should I book for Deepam or Pournami?','As early as possible — these dates sell out weeks in advance.'],
+    ['Which ID is needed?','A government photo ID for every adult. Foreign guests need passport and visa.']
+  ]
+};
 
-    <!-- JAVASCRIPT -->
-    <script>
-        function openBookingModal() {
-            alert("Booking inquiries for The Quill Residency are now open!");
-        }
-    </script>
+/* =============== helpers =============== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const inr=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const D=s=>new Date(s+'T00:00');
+const addDays=(s,n)=>{const d=D(s);d.setDate(d.getDate()+n);return iso(d)};
+const fmt=s=>D(s).toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
+const isWknd=s=>[5,6].includes(D(s).getDay()); // Fri, Sat nights
+
+/* =============== page =============== */
+$$('[data-phone]').forEach(e=>e.textContent=CONFIG.phone);
+$$('[data-phone-link]').forEach(e=>e.href='tel:'+CONFIG.phone.replace(/\s/g,''));
+$$('[data-email]').forEach(e=>e.textContent=CONFIG.email);
+$$('[data-email-link]').forEach(e=>e.href='mailto:'+CONFIG.email);
+$$('[data-address]').forEach(e=>e.textContent=CONFIG.address);
+$$('[data-times]').forEach(e=>e.textContent=CONFIG.checkIn+' · '+CONFIG.checkOut);
+$$('[data-wa-link]').forEach(e=>{e.href='https://wa.me/'+CONFIG.whatsapp;e.target='_blank'});
+$('#map').src='https://www.google.com/maps?q='+encodeURIComponent(CONFIG.mapQuery)+'&output=embed';
+$('#yr').textContent=new Date().getFullYear();
+$('#faqs').innerHTML=CONFIG.faqs.map(([q,a],i)=>`<details ${i?'':'open'}><summary>${q}</summary><p>${a}</p></details>`).join('');
+
+const hdr=$('#hdr'); const onScroll=()=>hdr.classList.toggle('solid',scrollY>60); addEventListener('scroll',onScroll); onScroll();
+$$('#mnav a').forEach(a=>a.onclick=()=>$('#mnav').classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+$$('.reveal').forEach(e=>io.observe(e));
+
+/* room tabs */
+let tabRoom='premium';
+function renderTabs(){
+  $('#tabs').innerHTML=CONFIG.rooms.map(r=>`<button class="tab ${r.id===tabRoom?'on':''}" data-t="${r.id}">${r.name}</button>`).join('');
+  $$('#tabs .tab').forEach(b=>b.onclick=()=>{tabRoom=b.dataset.t;renderTabs()});
+  const r=CONFIG.rooms.find(x=>x.id===tabRoom);
+  $('#rpanel').innerHTML=`<div class="img" style="background-image:url('${r.img}')">${r.badge?`<span>${r.badge}</span>`:''}</div>
+    <div class="info"><span class="count">${r.count} ${r.count>1?'rooms':'room'} · up to ${r.maxAdults} adults</span><h3>${r.name}</h3><p>${r.desc}</p>
+    <ul class="flist">${r.feats.map(f=>`<li>${f}</li>`).join('')}</ul>
+    <div class="rprice"><div><b>${inr(r.price)}</b> <small>/ night + GST</small></div><button class="btn btn-maroon" onclick="openBook(null,'${r.id}')">Book this room</button></div></div>`;
+}
+renderTabs();
+
+/* =============== booking =============== */
+const today=iso(new Date());
+const B={in:null,out:null,adults:2,kids:0,qty:1,room:'standard',bf:false,pkg:'',view:null};
+const room=()=>CONFIG.rooms.find(r=>r.id===B.room);
+const minRooms=r=>Math.max(1,Math.ceil(B.adults/r.maxAdults),Math.ceil(B.kids/Math.max(1,r.maxKids)));
+function fit(){if(minRooms(room())>room().count){const ok=CONFIG.rooms.find(r=>minRooms(r)<=r.count);if(ok)B.room=ok.id}
+  B.qty=Math.min(room().count,Math.max(B.qty,minRooms(room())))}
+function nightsList(){const a=[];if(!B.in||!B.out)return a;for(let d=B.in;d<B.out;d=addDays(d,1))a.push(d);return a}
+function calc(){
+  const r=room(),ns=nightsList();let base=0,gst=0;
+  ns.forEach(d=>{const t=r.price+(isWknd(d)?CONFIG.weekendExtra:0);base+=t*B.qty;gst+=t*CONFIG.gst(t)*B.qty});
+  const bf=B.bf?CONFIG.breakfastPerGuest*(B.adults+B.kids)*ns.length:0;
+  return{n:ns.length,base,gst,bf,bfg:bf*.05,total:base+gst+bf*1.05};
+}
+
+function openBook(pkg,roomId){
+  if(pkg){B.pkg=pkg} if(roomId){B.room=roomId}
+  if(!B.in){B.in=addDays(today,1);B.out=addDays(today,pkg?3:2)}
+  if(!B.view)B.view=B.in.slice(0,7);
+  fit();render();document.body.classList.add('booking');
+}
+function closeBook(){document.body.classList.remove('booking')}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeBook()});
+
+function renderCal(){
+  const [y,m]=B.view.split('-').map(Number), first=new Date(y,m-1,1), days=new Date(y,m,0).getDate();
+  $('#mLabel').textContent=first.toLocaleDateString('en-IN',{month:'long',year:'numeric'});
+  $('#prevM').disabled=B.view<=today.slice(0,7);
+  let h=['S','M','T','W','T','F','S'].map(d=>`<span class="dow">${d}</span>`).join('');
+  for(let i=0;i<first.getDay();i++)h+='<span></span>';
+  const base=room().price;
+  for(let d=1;d<=days;d++){
+    const s=`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`, past=s<today;
+    const p=base+(isWknd(s)?CONFIG.weekendExtra:0);
+    let c='day'; if(s===B.in)c+=' start'; if(s===B.out)c+=' end'; if(B.in&&B.out&&s>B.in&&s<B.out)c+=' inrange';
+    h+=`<button class="${c}" data-d="${s}" ${past?'disabled':''}>${d}<small>${past?'':'₹'+(p/1000).toFixed(1)+'k'}</small></button>`;
+  }
+  $('#calGrid').innerHTML=h;
+  $$('#calGrid .day').forEach(b=>b.onclick=()=>pick(b.dataset.d));
+  const n=calc().n;
+  $('#calHint').textContent=!B.out?`Check-in ${fmt(B.in)} — now tap your check-out date`:`${fmt(B.in)} → ${fmt(B.out)} · ${n} night${n>1?'s':''}`;
+}
+function pick(s){ if(!B.in||B.out||s<=B.in){B.in=s;B.out=null}else{B.out=s} render(); }
+$('#prevM').onclick=()=>{const[y,m]=B.view.split('-').map(Number);const d=new Date(y,m-2,1);B.view=iso(d).slice(0,7);renderCal()};
+$('#nextM').onclick=()=>{const[y,m]=B.view.split('-').map(Number);const d=new Date(y,m,1);B.view=iso(d).slice(0,7);renderCal()};
+
+$$('.cnt button').forEach(b=>b.onclick=()=>{
+  const k=b.dataset.c,d=+b.dataset.d;
+  if(k==='adults')B.adults=Math.min(20,Math.max(1,B.adults+d));
+  if(k==='kids')B.kids=Math.min(10,Math.max(0,B.kids+d));
+  if(k==='qty')B.qty=Math.min(room().count,Math.max(minRooms(room()),B.qty+d));
+  fit();render();
+});
+$('#bf').onchange=e=>{B.bf=e.target.checked;render()};
+
+function render(){
+  renderCal();
+  $('#pkgTag').textContent=B.pkg?'Package: '+B.pkg:'Best rate, booked direct';
+  $('#cAdults').textContent=B.adults;$('#cKids').textContent=B.kids;$('#cQty').textContent=B.qty;
+  $('#bfp').textContent=inr(CONFIG.breakfastPerGuest);
+  $('#ropt').innerHTML=CONFIG.rooms.map(r=>{const ok=minRooms(r)<=r.count;return`<label class="${ok?'':'off'}">
+    <input type="radio" name="rr" value="${r.id}" ${r.id===B.room?'checked':''} ${ok?'':'disabled'}>
+    <img src="${r.img.replace('w=1100','w=240')}" alt=""><span class="n"><b>${r.name}</b><small>${ok?`${r.count} available · ${r.maxAdults} adults/room`:'Not enough rooms for your group'}</small></span>
+    <span class="pr">${inr(r.price)}<small>/night</small></span></label>`}).join('');
+  $$('#ropt input').forEach(i=>i.onchange=()=>{B.room=i.value;B.qty=minRooms(room());fit();render()});
+  const c=calc(),r=room();
+  $('#bill').innerHTML=c.n?`
+    <div><span>${r.name} × ${B.qty} · ${c.n} night${c.n>1?'s':''}</span><span>${inr(c.base)}</span></div>
+    ${CONFIG.weekendExtra&&nightsList().some(isWknd)?`<div style="font-size:13px;color:var(--muted)"><span>Includes weekend rate on Fri/Sat nights</span></div>`:''}
+    <div><span>GST on room</span><span>${inr(c.gst)}</span></div>
+    ${B.bf?`<div><span>Breakfast</span><span>${inr(c.bf)}</span></div><div><span>GST on food 5%</span><span>${inr(c.bfg)}</span></div>`:''}
+    <div class="tot"><span>Total</span><span>${inr(c.total)}</span></div>`:'<div><span>Select your check-out date to see the bill.</span></div>';
+  $('#tot').textContent=c.n?inr(c.total):'—';
+}
+
+$('#sendBtn').onclick=()=>{
+  const e=$('#err');e.textContent='';
+  if(!calc().n)return e.textContent='Please select your check-out date on the calendar.';
+  for(const id of['gName','gPhone','gEmail']){const el=$('#'+id);if(!el.checkValidity()){el.focus();return e.textContent='Please enter your name, a valid mobile number and email.'}}
+  if(!$('#agree').checked)return e.textContent='Please accept the cancellation policy.';
+  const c=calc(),r=room(),ref='QR'+B.in.replace(/-/g,'').slice(2)+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+  const msg=`*Booking Request – The Quill Residency*
+Ref: ${ref}
+${B.pkg?`Package: ${B.pkg}\n`:''}Room: ${r.name} × ${B.qty}
+Check-in: ${fmt(B.in)}
+Check-out: ${fmt(B.out)} (${c.n} night${c.n>1?'s':''})
+Guests: ${B.adults} adult(s), ${B.kids} child(ren)
+Breakfast: ${B.bf?'Yes':'No'}
+Total incl. GST: ${inr(c.total)}
+Payment: ${$('#gPay').value}
+
+Name: ${$('#gName').value}
+Mobile: ${$('#gPhone').value}
+Email: ${$('#gEmail').value}
+${$('#gEta').value}
+Requests: ${$('#gNotes').value||'-'}`;
+  $('#ref').textContent=ref;
+  $('#waSend').href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(msg);
+  $('#mailSend').href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('Booking request '+ref)+'&body='+encodeURIComponent(msg.replace(/\*/g,''));
+  $('#form').hidden=true;$('#ok').hidden=false;$('#dfoot').style.display='none';$('#dbody').scrollTop=0;
+};
+function backToForm(){$('#form').hidden=false;$('#ok').hidden=true;$('#dfoot').style.display=''}
+
+/* policies */
+const POL={cancel:['Cancellation & refund','<ul><li>Free cancellation up to 72 hours before check-in.</li><li>Within 72 hours: one night charged.</li><li>No-show: full first night charged.</li><li>Karthigai Deepam bookings are non-refundable once confirmed.</li><li>Refunds within 7 working days.</li></ul>'],
+  terms:['Terms & conditions',`<ul><li>Check-in ${CONFIG.checkIn}, check-out ${CONFIG.checkOut}.</li><li>Government photo ID required for all adults.</li><li>Rates per room per night, plus applicable GST.</li><li>Children under 5 stay free on existing bedding.</li></ul>`],
+  privacy:['Privacy','<p>We use your name, phone and email only to manage your reservation, and never sell your data.</p>']};
+$$('[data-pol]').forEach(a=>a.onclick=e=>{e.preventDefault();const[t,b]=POL[a.dataset.pol];$('#mbody').innerHTML=`<h3 style="font-size:28px;color:var(--maroon);margin-bottom:14px">${t}</h3>${b}<p style="margin-top:16px;font-size:13px;color:var(--muted)">Sample text — review before publishing.</p>`;$('#modal').classList.add('open')});
+</script>
 </body>
 </html>
